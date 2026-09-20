@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Vista Unificada — Cobertura de Interoperabilidad</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        h1 { color: #111; }
+        ul { font-size: 1.2rem; line-height: 2; }
+        .pct { font-weight: bold; color: #107c41; }
+    </style>
+</head>
+<body>
+    <h1>Cobertura de migración a FHIR por ciudad</h1>
+    <ul id="cobertura-lista">
+        {% for sede in sedes %}
+        <li data-ciudad="{{ sede.ciudad }}">{{ sede.ciudad }}: <span class="pct">{{ sede.cobertura_pct }}</span>%</li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        async function actualizarCobertura() {
+            try {
+                const res = await fetch('/api/cobertura');
+                const datos = await res.json();
+                datos.forEach(item => {
+                    const li = document.querySelector(`li[data-ciudad="${item.ciudad}"] .pct`);
+                    if (li) {
+                        li.textContent = item.cobertura_pct.toFixed(1);
+                    }
+                });
+            } catch (err) {
+                console.error("Error al actualizar cobertura:", err);
+            }
+        }
+        setInterval(actualizarCobertura, 3000);
+    </script>
+</body>
+</html>
