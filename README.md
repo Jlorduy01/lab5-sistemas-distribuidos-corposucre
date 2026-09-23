@@ -41,10 +41,6 @@ El diseño del middleware se fundamenta en los cuatro principios esenciales de l
 
 ## 3. Matriz de Trazabilidad: 57 Campos Interoperables (Res. 866 de 2021)
 
-Se implementó el mapeo normativo completo de los 57 campos exigidos por el Ministerio de Salud de Colombia hacia los recursos FHIR R4:
-
-## 3. Matriz de Trazabilidad: 57 Campos Interoperables (Res. 866 de 2021)
-
 Se implementó el mapeo normativo exhaustivo de los 57 campos exigidos por el Ministerio de Salud de Colombia hacia los recursos HL7 FHIR R4:
 
 | # | Campo Res. 866 / Minsalud | Tipo | HL7v2 | Recurso FHIR | Ruta / Elemento en FHIR R4 |
